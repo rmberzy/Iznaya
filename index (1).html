@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IZNAYAS ✿ Quiz - Etapas 1 a 5</title>
+  <style>
+    body {
+      background-color: #ffeef8;
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #d63384;
+    }
+    .quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff0f7;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    button {
+      background-color: #ff80b3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      display: block;
+      margin: 30px auto 0;
+    }
+    button:hover {
+      background-color: #e65c9c;
+    }
+    #resultado {
+      display: none;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      border: 2px dashed #ffb3d9;
+    }
+  </style>
+</head>
+<body>
+  <h1>✿ Descubra sua Bias do IZNA ✿</h1>
+
+  <div class="quiz-container">
+    <form id="quiz-form">
+      <h2>Etapa 1 – Personalidade</h2>
+      <!-- Aqui você adicionaria as 5 perguntas da etapa 1 -->
+
+      <h2>Etapa 2 – Estilo</h2>
+      <!-- Aqui você adicionaria as 5 perguntas da etapa 2 -->
+
+      <h2>Etapa 3 – Hábitos e Rotinas</h2>
+      <!-- Aqui você adicionaria as 5 perguntas da etapa 3 -->
+
+      <h2>Etapa 4 – Comportamento em Grupo</h2>
+      <!-- Aqui você adicionaria as 5 perguntas da etapa 4 -->
+
+      <h2>Etapa 5 – Coisas Curiosas</h2>
+      <!-- Aqui estão as perguntas da etapa 5 -->
+      <div class="question">
+        <h3>21. Qual dessas palavras te descreve melhor?</h3>
+        <label><input type="radio" name="q21" value="A"> Carinhosa</label>
+        <label><input type="radio" name="q21" value="B"> Determinada</label>
+        <label><input type="radio" name="q21" value="C"> Misteriosa</label>
+        <label><input type="radio" name="q21" value="D"> Divertida</label>
+        <label><input type="radio" name="q21" value="E"> Fofinha</label>
+      </div>
+
+      <div class="question">
+        <h3>22. Se fosse um emoji, qual seria?</h3>
+        <label><input type="radio" name="q22" value="A"> 🦊</label>
+        <label><input type="radio" name="q22" value="B"> 🐻</label>
+        <label><input type="radio" name="q22" value="C"> 🐻‍❄️</label>
+        <label><input type="radio" name="q22" value="D"> 🐈‍⬛</label>
+        <label><input type="radio" name="q22" value="E"> 🐰</label>
+      </div>
+
+      <div class="question">
+        <h3>23. Qual dessas frases parece algo que você diria?</h3>
+        <label><input type="radio" name="q23" value="A"> "Vai dar tudo certo, só respira."</label>
+        <label><input type="radio" name="q23" value="B"> "Confia, eu consigo!"</label>
+        <label><input type="radio" name="q23" value="C"> "A beleza está nos detalhes."</label>
+        <label><input type="radio" name="q23" value="D"> "Vamos dançar e rir disso!"</label>
+        <label><input type="radio" name="q23" value="E"> "Você quer um abraço?"</label>
+      </div>
+
+      <div class="question">
+        <h3>24. Qual dessas qualidades te faz brilhar?</h3>
+        <label><input type="radio" name="q24" value="A"> Serenidade</label>
+        <label><input type="radio" name="q24" value="B"> Força de palco</label>
+        <label><input type="radio" name="q24" value="C"> Elegância natural</label>
+        <label><input type="radio" name="q24" value="D"> Energia vibrante</label>
+        <label><input type="radio" name="q24" value="E"> Charme fofo</label>
+      </div>
+
+      <div class="question">
+        <h3>25. Qual dessas combinações te representa?</h3>
+        <label><input type="radio" name="q25" value="A"> Amorosa + Inteligente</label>
+        <label><input type="radio" name="q25" value="B"> Sexy + Líder nata</label>
+        <label><input type="radio" name="q25" value="C"> Silenciosa + Fashion</label>
+        <label><input type="radio" name="q25" value="D"> Engraçada + Brilhante</label>
+        <label><input type="radio" name="q25" value="E"> Maknae + Barbie</label>
+      </div>
+
+      <button type="submit">Finalizar Quiz ✿</button>
+    </form>
+
+    <div id="resultado">
+      <h2>Seu bias é...</h2>
+      <p id="biasFinal">(Mensagem final aparecerá aqui!)</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('quiz-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const respostas = {};
+      for (let i = 1; i <= 25; i++) {
+        const resposta = document.querySelector('input[name="q' + i + '"]:checked');
+        if (resposta) {
+          const letra = resposta.value;
+          respostas[letra] = (respostas[letra] || 0) + 1;
+        }
+      }
+
+      let bias = '';
+      const maior = Object.entries(respostas).sort((a, b) => b[1] - a[1])[0][0];
+
+      switch (maior) {
+        case 'A': bias = 'Tomioka Mai 🦊'; break;
+        case 'B': bias = 'Bang Jeemin 🐻'; break;
+        case 'C': bias = 'Yoon Jiyoon 🐻‍❄️'; break;
+        case 'D': bias = 'Narai Koko 🐈‍⬛'; break;
+        case 'E': bias = 'Ryu Sarang, Choi Jungeun ou Jeong Saebi 🐶🐯🐰 (Empate ou vibe maknae fofa!)'; break;
+        default: bias = 'Não foi possível determinar 😢'; break;
+      }
+
+      document.getElementById('resultado').style.display = 'block';
+      document.getElementById('biasFinal').innerText = bias;
+    });
+  </script>
+</body>
+</html>
